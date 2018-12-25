@@ -1,4 +1,4 @@
-pipeline {
+/* pipeline {
     agent any
     stages {
         stage('Test') {
@@ -23,6 +23,20 @@ pipeline {
         changed {
             echo 'This will run only if the state of the Pipeline has changed'
             echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    }
+} */
+
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent {
+        docker { image 'node:7-alpine' }
+    }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
     }
 }
